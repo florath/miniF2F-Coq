@@ -14,14 +14,8 @@ Lemma Hmodle : forall y: Z, 0 <= y < 7 -> In y [0; 1; 2; 3; 4; 5; 6].
 Proof.
   intros y H.
   assert (Hcases : y = 0 \/ y = 1 \/ y = 2 \/ y = 3 \/ y = 4 \/ y = 5 \/ y = 6) by lia.
-  destruct Hcases as [H0|[H1|[H2|[H3|[H4|[H5|H6]]]]]]; subst; simpl.
-  - left. reflexivity.
-  - right. left. reflexivity. 
-  - right. right. left. reflexivity. 
-  - right. right. right. left. reflexivity. 
-  - right. right. right. right. left. reflexivity.
-  - right. right. right. right. right. left. reflexivity.
-  - right. right. right. right. right. right. left. reflexivity.
+  destruct Hcases as [H0|[H1|[H2|[H3|[H4|[H5|H6]]]]]]; subst;
+  solve [repeat (try (left; reflexivity); right)].
 Qed.
 
 Lemma mod_7_cubic_residues_values: forall x : Z, 
