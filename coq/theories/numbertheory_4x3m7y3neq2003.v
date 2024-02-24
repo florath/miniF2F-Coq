@@ -1,4 +1,5 @@
 Require Import ZArith.
+Require Import ZArith.Zpow_facts.
 Require Import List.
 Import ListNotations.
 Require Import Lia.
@@ -8,13 +9,6 @@ Lemma mod_7_property : forall a b : Z, (a = b) -> (a mod 7 = b mod 7).
 Proof.
   intros a b H. rewrite H. reflexivity.
 Qed.
-
-Require Import ZArith.Zpow_facts.
-
-Lemma pow3_mod : forall x : Z,
-  x ^ 3 mod 7 = (x mod 7) ^ 3 mod 7.
-Proof.
-  intros x. apply Zpower_mod. lia. Qed.
 
 Lemma Hmodle : forall y: Z, 0 <= y < 7 -> In y [0; 1; 2; 3; 4; 5; 6].
 Proof.
@@ -44,15 +38,14 @@ Proof.
   remember (x mod 7) as y eqn:H.
   assert (Hcases: In y [0; 1; 2; 3; 4; 5; 6]) by (apply Hmod7cases; reflexivity).
   clear Hmod7cases.
-  destruct Hcases as [Hc|[Hc|[Hc|[Hc|[Hc|[Hc|[Hc|]]]]]]]; subst y.
-  - left.         rewrite Zmult_mod. rewrite pow3_mod. rewrite <- Hc. compute. reflexivity.
-  - right. right. rewrite Zmult_mod. rewrite pow3_mod. rewrite <- Hc. compute. reflexivity.
-  - right. right. rewrite Zmult_mod. rewrite pow3_mod. rewrite <- Hc. compute. reflexivity.
-  - right. left.  rewrite Zmult_mod. rewrite pow3_mod. rewrite <- Hc. compute. reflexivity.
-  - right. right. rewrite Zmult_mod. rewrite pow3_mod. rewrite <- Hc. compute. reflexivity.
-  - right. left.  rewrite Zmult_mod. rewrite pow3_mod. rewrite <- Hc. compute. reflexivity.
-  - right. left.  rewrite Zmult_mod. rewrite pow3_mod. rewrite <- Hc. compute. reflexivity.
-  - contradiction.
+
+  rewrite Zmult_mod, Zpower_mod by lia.
+
+  destruct Hcases as [Hc|[Hc|[Hc|[Hc|[Hc|[Hc|[Hc|]]]]]]]; subst y;
+    try (left; rewrite <- Hc; compute; reflexivity);         (* Case 0 *)
+    try (right; left; rewrite <- Hc; compute; reflexivity);  (* Case 3 *)
+    try (right; right; rewrite <- Hc; compute; reflexivity); (* Case 4 *)
+    try (contradiction).
 Qed.
 
 Lemma cubic_residues_mod_7: forall x : Z, (4 * x^3) mod 7 <> 1.
