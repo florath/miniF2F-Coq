@@ -5,7 +5,7 @@ import Mathlib.Data.Nat.Factorial.BigOperators
 import Mathlib.Data.Nat.Factorial.Cast
 import Mathlib.Tactic
 
-set_option maxRecDepth 4096
+namespace aplhalean
 
 theorem amc12_2001_p5 :
   Finset.prod (Finset.filter (λ x => ¬ Even x) (Finset.range 10000))
