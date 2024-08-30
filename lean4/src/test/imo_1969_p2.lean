@@ -6,13 +6,9 @@ import Mathlib.Tactic
 namespace alphalean
 
 theorem imo_1969_p2
-  (m n : ℝ)
   (v0 v1: ℝ)
-  (k : ℕ)
   (v2 : ℕ)
-  (a : ℕ → ℝ)
   (f0 : ℕ → ℝ)
-  (y : ℝ → ℝ)
   (f1 : ℝ → ℝ)
   (hyp0 : 0 < v2)
   (hyp1 : ∀ v3, f1 v3 = ∑ v4 in Finset.range v2, ((Real.cos (f0 v4 + v3)) / (2^v4)))
