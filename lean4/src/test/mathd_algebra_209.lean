@@ -1,6 +1,11 @@
+import Mathlib.Data.Real.Basic
+import Mathlib.Tactic
+
+namespace alphalean
+
 theorem mathd_algebra_209
-  (σ : equiv ℝ ℝ)
-  (h₀ : σ.2 2 = 10)
-  (h₁ : σ.2 10 = 1)
-  (h₂ : σ.2 1 = 2) :
-  σ.1 (σ.1 10) = 1 := by
+  (f0 : Equiv ℝ ℝ)
+  (hyp0 : f0.2 2 = 10)
+  (hyp1 : f0.2 10 = 1)
+  (hyp2 : f0.2 1 = 2) :
+  f0.1 (f0.1 10) = 1 := by
