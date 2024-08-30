@@ -1,5 +1,10 @@
+import Mathlib.Data.Nat.Defs
+import Mathlib.Tactic
+
+namespace alphalean
+
 theorem imo_1977_p6
-  (f : ℕ → ℕ)
-  (h₀ : ∀ n, 0 < f n)
-  (h₁ : ∀ n, 0 < n → f (f n) < f (n + 1)) :
-  ∀ n, 0 < n → f n = n := by
+  (f0 : ℕ → ℕ)
+  (hyp0 : ∀ v0, 0 < f0 v0)
+  (hyp1 : ∀ v0, 0 < v0 → f0 (f0 v0) < f0 (v0 + 1)) :
+  ∀ v0, 0 < v0 → f0 v0 = v0 := by
