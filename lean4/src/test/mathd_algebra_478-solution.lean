@@ -1,6 +1,8 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Tactic
 
+namespace alphalean
+
 -- version f2540660e1ae9c9ee75dbf5c073b3658c93e57cf
 -- found 2024-08-30 08:06
 -- During initialization

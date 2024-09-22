@@ -40,3 +40,10 @@ theorem mathd_numbertheory_3_alt_03 :
 theorem mathd_numbertheory_3_alt_04 :
   (∑ v0 in Finset.range 10, ((v0 + 1)^2)) % 10 = 5 := by
   simp_arith
+
+-- version 5062050f1958679f40f3913b20514aa439d391e1
+-- found 2024-08-30 08:45
+-- during initialization
+theorem mathd_numbertheory_3_alt_05 :
+  (∑ v0 in Finset.range 10, ((v0 + 1)^2)) % 10 = 5 := by
+  simp_all_arith

@@ -1,3 +1,6 @@
+import Mathlib.Data.Nat.Defs
+import Mathlib.Tactic
+
 theorem mathd_numbertheory_430
   (a b c : ℕ)
   (h₀ : 1 ≤ a ∧ a ≤ 9)
